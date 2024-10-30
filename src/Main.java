@@ -1,22 +1,56 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
-    public static void main(String[] args) {
-        Courier courier = new Courier("Петя", false);
-        Developer developer = new Developer("Ваня", "Middle", "SimbirSoft");
+    public static void main(String[] args) throws WrongLoginException, WrongPasswordException {
+        String login = "sheym_321";
+        String password = "psswd_12345";
+        String confirmPassword = "psswd_1234";
+        System.out.println(logIn(login, password, confirmPassword));
+    }
 
-//        courier.work();
-//        courier.work();
-//        courier.levelUp();
-//        courier.work();
+    public static boolean logIn(String login, String passwd, String confirmPasswd) throws WrongLoginException, WrongPasswordException {
+        try {
+            if (isCorrect(login) && isCorrect(passwd) && confirmPasswd.equals(passwd)) {
+                System.out.println("Добро пожаловать!");
+                return true;
+            }
+            if (!isCorrect(login)) {
+                throw new WrongLoginException("Неверный формат данных для логина");
+            }
+            if (!isCorrect(passwd)) {
+                throw new WrongPasswordException("Неверный формат данных для пароля");
+            }
+            if (!confirmPasswd.equals(passwd)) {
+                throw new WrongPasswordException("Пароль не подтверждён");
+            }
+        }
+        catch (WrongLoginException | WrongPasswordException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
 
-//        Developer.printDeveloperDescription();
-//        developer.work();
-//        developer.levelUp();
-//        developer.work();
+    public static boolean isCorrect(String str) {
+        Pattern pattern = Pattern.compile("[\\w_]{1,20}");
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+    }
+}
 
 
-//        courier.inviteFriend();
-//        courier.inviteFriend();
-//        courier.inviteFriend();
+class WrongLoginException extends Exception {
+    public WrongLoginException() {}
 
+    public WrongLoginException(String message) {
+        super(message);
+    }
+}
+
+class WrongPasswordException extends Exception {
+    public WrongPasswordException() {}
+
+    public WrongPasswordException(String message) {
+        super(message);
     }
 }
