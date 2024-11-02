@@ -1,9 +1,15 @@
 import java.util.Random;
 
 public class Courier extends Worker implements ILevelUp, IInviteFriend {
-    private boolean haveBike; // Наличие велосипеда
-    private int orderCount; // Количество доставленных заказов
-    static String uniformColour = "Pink"; // Цвет формы
+    /** Наличие велосипеда */
+    private boolean haveBike;
+
+    /** Количество доставленных заказов */
+    private int orderCount;
+
+    /** Цвет формы */
+    static String uniformColour = "Pink";
+
 
     public Courier(String name, boolean haveBike) {
         super(name);
@@ -39,8 +45,9 @@ public class Courier extends Worker implements ILevelUp, IInviteFriend {
         }
     }
 
+    /** Если новый курьер доставит больше 150 заказов за неделю - бонус 3000р */
     @Override
-    public void inviteFriend() { // Если новый курьер доставит больше 150 заказов за неделю - бонус 3000р
+    public void inviteFriend() {
         Courier newCourier = new Courier("Новый курьер", false);
         for (int i = 0; i < 5; i++) {
             newCourier.work();

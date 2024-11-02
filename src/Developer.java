@@ -1,6 +1,10 @@
 public class Developer extends Worker implements ILevelUp {
-    private String level; // Junior, Middle, Senior, Lead
-    private String companyName; // Название компании
+    /** Junior, Middle, Senior, Lead */
+    private String level;
+
+    /** Название компании */
+    private String companyName;
+
     static String PCType = "Laptop";
 
     public Developer(String name, String level, String companyName) {
@@ -14,19 +18,23 @@ public class Developer extends Worker implements ILevelUp {
         switch (level) {
             case "Junior":
                 money += 100000;
-                System.out.printf("За месяц программист %s заработал 100000 рублей. На его счету уже %d рублей\n", name, money);
+                System.out.printf("За месяц программист %s заработал 100000 рублей. " +
+                        "На его счету уже %d рублей\n", name, money);
                 break;
             case "Middle":
                 money += 200000;
-                System.out.printf("За месяц программист %s заработал 200000 рублей. На его счету уже %d рублей\n", name, money);
+                System.out.printf("За месяц программист %s заработал 200000 рублей. " +
+                        "На его счету уже %d рублей\n", name, money);
                 break;
             case "Senior":
                 money += 270000;
-                System.out.printf("За месяц программист %s заработал 270000 рублей. На его счету уже %d рублей\n", name, money);
+                System.out.printf("За месяц программист %s заработал 270000 рублей. " +
+                        "На его счету уже %d рублей\n", name, money);
                 break;
             case "Lead":
                 money += 350000;
-                System.out.printf("За месяц программист %s заработал 350000 рублей. На его счету уже %d рублей\n", name, money);
+                System.out.printf("За месяц программист %s заработал 350000 рублей. " +
+                        "На его счету уже %d рублей\n", name, money);
                 break;
             default:
                 System.out.println("Без опыта не берем!");
@@ -65,7 +73,8 @@ public class Developer extends Worker implements ILevelUp {
     }
 
     static void printDeveloperDescription() {
-        System.out.println("\nПрограммист — это специалист по созданию и доработке программных продуктов для компьютеров и других\n" +
-                "устройств, архитектуры различных интернет-ресурсов, компонентов и методов анализа и моделирования.\n");
+        System.out.println("\nПрограммист — это специалист по созданию и доработке " +
+                "программных продуктов для компьютеров и других\nустройств, " +
+                "архитектуры различных интернет-ресурсов, компонентов и методов анализа и моделирования.\n");
     }
 }

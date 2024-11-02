@@ -1,3 +1,4 @@
-public interface IInviteFriend { // Реферальная программа
+/** Реферальная программа */
+public interface IInviteFriend {
     void inviteFriend();
 }
