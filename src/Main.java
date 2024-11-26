@@ -2,14 +2,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    public static void main(String[] args) throws WrongLoginException, WrongPasswordException {
+    public static void main(String[] args) {
         String login = "sheym_321";
         String password = "psswd_12345";
         String confirmPassword = "psswd_1234";
         System.out.println(logIn(login, password, confirmPassword));
     }
 
-    public static boolean logIn(String login, String passwd, String confirmPasswd) throws WrongLoginException, WrongPasswordException {
+    public static boolean logIn(String login, String passwd, String confirmPasswd) {
         try {
             if (isCorrect(login) && isCorrect(passwd) && confirmPasswd.equals(passwd)) {
                 System.out.println("Добро пожаловать!");
@@ -35,22 +35,5 @@ public class Main {
         Pattern pattern = Pattern.compile("[\\w_]{1,20}");
         Matcher matcher = pattern.matcher(str);
         return matcher.matches();
-    }
-}
-
-
-class WrongLoginException extends Exception {
-    public WrongLoginException() {}
-
-    public WrongLoginException(String message) {
-        super(message);
-    }
-}
-
-class WrongPasswordException extends Exception {
-    public WrongPasswordException() {}
-
-    public WrongPasswordException(String message) {
-        super(message);
     }
 }
